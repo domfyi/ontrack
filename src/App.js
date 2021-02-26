@@ -44,7 +44,7 @@ const githubCommit =
 function App() {
   const [page, setPage] = useQueryParam("page", NumberParam, 1);
   if (!page) setPage(1);
-  const [query, setQuery] = useQueryParam("query", StringParam, "");
+  const [query, setQuery] = useQueryParam("query", StringParam);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,7 +57,7 @@ function App() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             page,
-            filters: [{ type: "all", values: [query] }],
+            filters: [{ type: "all", values: [query || ""] }],
           }),
         });
         const json = await res.json();
