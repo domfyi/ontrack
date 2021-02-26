@@ -10,7 +10,7 @@ import {
 import GithubCorner from "react-github-corner";
 import { useQueryParam, NumberParam, StringParam } from "use-query-params";
 
-const api = "http://nyx.vima.ekt.gr:3000/api/books";
+const api = "/api/books";
 
 function Paging({ page, setPage, data }) {
   return (
