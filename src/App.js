@@ -7,6 +7,7 @@ import {
   CardColumns,
   Button,
 } from "react-bootstrap";
+import GithubCorner from "react-github-corner";
 import { useQueryParam, NumberParam, StringParam } from "use-query-params";
 
 const api = "http://nyx.vima.ekt.gr:3000/api/books";
@@ -37,6 +38,9 @@ function Paging({ page, setPage, data }) {
   );
 }
 
+const githubCommit =
+  "https://github.com/domfyi/ontrack/commit/7b197668cbff297bf3abe0b95b44dced1a82baa7";
+
 function App() {
   const [page, setPage] = useQueryParam("page", NumberParam, 1);
   if (!page) setPage(1);
@@ -64,6 +68,7 @@ function App() {
   );
   return (
     <Container fluid="md">
+      <GithubCorner href={githubCommit} />
       <div className="header">
         <Row className="text-center">
           <Col>
@@ -99,6 +104,13 @@ function App() {
                   - {book.book_author.join(", ")}
                 </Card.Text>
               </Card.Body>
+
+              <Card.Footer>
+                <small className="text-muted">
+                  Published {book.book_publication_year} in{" "}
+                  {book.book_publication_country}
+                </small>
+              </Card.Footer>
             </Card>
           ))}
         </CardColumns>
